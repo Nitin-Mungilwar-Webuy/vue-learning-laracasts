@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>custom component</title>
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- <script src="https://cdn.tailwindcss.com/2.2.16/tailwind.min.js"></script> -->
+  </head>
+  <body class="h-full grid place-items-center">
+    <div id="app">
+      <app-button>Submit</app-button>
+      <app-button>register</app-button>
+    </div>
+    <script>
+      let app = {
+        components: {
+          "app-button": {
+            template: `
+              
+              <button class="bg-gray-200 hover:bg-gray-400 border rounded px-5 py-2 disabled:cursor-not-allowed"  :disabled="complete">
+                <slot></slot>
+              </button>
+            `,
+            data() {
+              return {
+                complete: true,
+              };
+            },
+          },
+        },
+      };
+      Vue.createApp(app).mount("#app");
+    </script>
+  </body>
+</html>
